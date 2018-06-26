@@ -2,9 +2,11 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
+import jdk.nashorn.internal.objects.Global;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -20,6 +22,13 @@ public class GameLoop extends AnimationTimer {
 
         if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
             Globals.setBoner(false);
+
+            for (GameEntity e : Globals.gameObjects){
+                System.out.println(e);
+                if (e instanceof Eighteen){
+                    Globals.removeGameObject(e);
+                }
+            }
         }
 
         for (GameEntity gameObject : Globals.gameObjects) {

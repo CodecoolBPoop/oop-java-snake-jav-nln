@@ -37,7 +37,7 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
 
-    public static Image eighteen = new Image("eighteen.png");
+    public static Image eighteen = new Image("18.png");
     public static Image viagra = new Image("viagra.png");
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");

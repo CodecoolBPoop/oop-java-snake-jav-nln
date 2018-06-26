@@ -1,22 +1,23 @@
-package com.codecool.snake.entities;
+package com.codecool.snake.entities.powerups;
 
 import com.codecool.snake.Globals;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class eighteen extends GameEntity {
+public class Eighteen extends GameEntity {
 
-    public eighteen(Pane pane) {
+    public Eighteen(Pane pane) {
         super(pane);
         setImage(Globals.eighteen);
         pane.getChildren().add(this);
 
         Random rnd = new Random();
-        setX(ThreadLocalRandom.current().nextLong(25, (long) Globals.WINDOW_WIDTH - 25));
-        setY(ThreadLocalRandom.current().nextLong(25, (long) Globals.WINDOW_HEIGHT - 25));
+        setX(650);
+        setY(350);
     }
 
 }
