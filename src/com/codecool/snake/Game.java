@@ -14,12 +14,15 @@ import javafx.stage.Stage;
 
 public class Game extends Pane {
 
+    public static Text healthDisplay = new Text(50,50,"SNAKE 1 HEALTH: ");
+    public static Text healthDisplay2 = new Text(50,75,"SNAKE 2 HEALTH: ");
     public static Text healthDisplay = new Text(50,50,"HEALTH: ");
     public static Button restartButton = new Button("something");
     private Stage primaryStage;
 
     public Game(Stage primaryStage) {
         new SnakeHead(this, 500, 500);
+        new SnakeHead(this, 300,300);
 
         new SimpleEnemy(this);
         new SimpleEnemy(this);
@@ -54,6 +57,8 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = true; break;
                 case RIGHT: Globals.rightKeyDown  = true; break;
+                case A:  Globals.aKeyDown  = true; break;
+                case D: Globals.dKeyDown  = true; break;
             }
         });
 
@@ -61,6 +66,8 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = false; break;
                 case RIGHT: Globals.rightKeyDown  = false; break;
+                case A:  Globals.aKeyDown  = false; break;
+                case D: Globals.dKeyDown  = false; break;
             }
         });
         Globals.gameLoop = new GameLoop();
