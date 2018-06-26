@@ -27,7 +27,6 @@ public class Game extends Pane {
 
         new SuperPowerup(this);
         new SuperPowerup(this);
-        new SuperPowerup(this);
 
     }
 
