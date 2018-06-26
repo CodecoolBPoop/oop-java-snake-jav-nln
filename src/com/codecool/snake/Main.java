@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static Text healthDisplay = new Text();
 
     public static void main(String[] args) {
         launch(args);
@@ -18,11 +17,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Game game = new Game();
-        healthDisplay.setX(50);
-        healthDisplay.setY(50);
-        Group root = new Group(game, healthDisplay);
 
         primaryStage.setTitle("Snake Game");
+        Group root = new Group(game, game.healthDisplay);
         primaryStage.setScene(new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
         primaryStage.show();
         game.start();
