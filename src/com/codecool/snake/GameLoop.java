@@ -18,6 +18,10 @@ public class GameLoop extends AnimationTimer {
 
         respawnPowerUps();
 
+        if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
+            Globals.setBoner(false);
+        }
+
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
                 Animatable animObject = (Animatable) gameObject;
@@ -50,12 +54,9 @@ public class GameLoop extends AnimationTimer {
                     powerUpCounter++;
                 }
             }
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
             if (powerUpCounter < maxPowerUps) {
                 Globals.addGameObject(new SimplePowerup(Main.game));
             }
-
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
         }
     }
 }
