@@ -8,19 +8,20 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import static com.codecool.snake.Game.healthDisplay;
+import static com.codecool.snake.Game.restartButton;
 import static com.codecool.snake.Game.healthDisplay2;
 
 public class Main extends Application {
-    public static Game game = new Game();
+    public static Game game;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-
+        game = new Game(primaryStage);
         primaryStage.setTitle("Snake Game");
-        Group root = new Group(game, healthDisplay, healthDisplay2);
+        Group root = new Group(game, healthDisplay, healthDisplay2, restartButton);
         primaryStage.setScene(new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
         primaryStage.show();
         game.start();
