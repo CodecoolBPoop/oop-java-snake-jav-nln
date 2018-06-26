@@ -33,10 +33,10 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void step() {
         if (this.name.equals("Snake 1")) {
-            Game.healthDisplay.setText("SNAKE 1 HEALTH: " + getHealth());
+            Game.healthDisplay.setText(name + " HEALTH: " + getHealth());
         }
         if (this.name.equals("Snake 2")) {
-            Game.healthDisplay2.setText("SNAKE 2 HEALTH: " + getHealth());
+            Game.healthDisplay2.setText(name + " HEALTH: " + getHealth());
         }
 
         double dir = getRotate();
@@ -80,8 +80,18 @@ public class SnakeHead extends GameEntity implements Animatable {
 
         // check for game over condition
         if (isOutOfBounds() || health <= 0) {
-            System.out.println("Game Over");
-            Globals.gameLoop.stop();
+            System.out.println(name + " DIED!!!");
+            if (this.name.equals("Snake 1")) {
+                Game.healthDisplay.setText(name + " DIED!!!");
+            }
+            if (this.name.equals("Snake 2")) {
+                Game.healthDisplay2.setText(name + " DIED!!!");
+            }
+            destroy();
+            instances--;
+            if (instances==0) {
+                Globals.gameLoop.stop();
+            }
         }
     }
 
