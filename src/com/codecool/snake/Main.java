@@ -10,15 +10,13 @@ import javafx.stage.Stage;
 import static com.codecool.snake.Game.healthDisplay;
 
 public class Main extends Application {
-
-
+    public static Game game = new Game();
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        Game game = new Game();
 
         primaryStage.setTitle("Snake Game");
         Group root = new Group(game, healthDisplay);
