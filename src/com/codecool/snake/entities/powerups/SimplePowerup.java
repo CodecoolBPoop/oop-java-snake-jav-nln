@@ -7,6 +7,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 // a simple powerup that makes the snake grow TODO make other powerups
 public class SimplePowerup extends GameEntity implements Interactable {
@@ -17,8 +18,8 @@ public class SimplePowerup extends GameEntity implements Interactable {
         pane.getChildren().add(this);
 
         Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setX(ThreadLocalRandom.current().nextLong(25, (long)Globals.WINDOW_WIDTH - 25));
+        setY(ThreadLocalRandom.current().nextLong(25, (long)Globals.WINDOW_HEIGHT - 25));
     }
 
     @Override
