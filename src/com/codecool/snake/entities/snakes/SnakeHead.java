@@ -32,7 +32,13 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
-        Game.healthDisplay.setText("HEALTH: " + getHealth());
+        if (this.name.equals("Snake 1")) {
+            Game.healthDisplay.setText("SNAKE 1 HEALTH: " + getHealth());
+        }
+        if (this.name.equals("Snake 2")) {
+            Game.healthDisplay2.setText("SNAKE 2 HEALTH: " + getHealth());
+        }
+
         double dir = getRotate();
         float turnRate = 2;
 
