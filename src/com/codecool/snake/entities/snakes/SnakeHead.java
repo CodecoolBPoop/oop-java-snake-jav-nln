@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -28,6 +29,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
+        Main.healthDisplay.setText("HEALTH: " + getHealth());
         double dir = getRotate();
         if (Globals.leftKeyDown) {
             dir = dir - turnRate;
@@ -69,4 +71,9 @@ public class SnakeHead extends GameEntity implements Animatable {
     public void changeHealth(int diff) {
         health += diff;
     }
+
+    public int getHealth() {
+        return health;
+    }
+
 }
