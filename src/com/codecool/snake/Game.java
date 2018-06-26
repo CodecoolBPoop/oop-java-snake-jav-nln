@@ -5,14 +5,20 @@ import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SuperPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Game extends Pane {
 
     public static Text healthDisplay = new Text(50,50,"HEALTH: ");
+    public static Button restartButton = new Button("something");
+    private Stage primaryStage;
 
-    public Game() {
+    public Game(Stage primaryStage) {
         new SnakeHead(this, 500, 500);
 
         new SimpleEnemy(this);
@@ -28,6 +34,18 @@ public class Game extends Pane {
         new SuperPowerup(this);
         new SuperPowerup(this);
 
+        this.primaryStage = primaryStage;
+    }
+
+    public void restart() {
+        /*Image image = new Image("restart.png");
+        ImageView imageView = new ImageView(image);*/
+//        Button restartButton = new Button("asd");
+        /*restartButton.setLayoutX(10);
+        restartButton.setLayoutY(10);*/
+        Button btn = new Button();
+        btn.setText("'Hello World'");
+        this.getChildren().add(btn);
     }
 
     public void start() {
