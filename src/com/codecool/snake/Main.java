@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static com.codecool.snake.Game.healthDisplay;
+
 public class Main extends Application {
 
 
@@ -19,7 +21,7 @@ public class Main extends Application {
         Game game = new Game();
 
         primaryStage.setTitle("Snake Game");
-        Group root = new Group(game, game.healthDisplay);
+        Group root = new Group(game, healthDisplay);
         primaryStage.setScene(new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
         primaryStage.show();
         game.start();
