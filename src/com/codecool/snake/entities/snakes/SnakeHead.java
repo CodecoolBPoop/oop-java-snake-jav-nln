@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.Game;
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -32,14 +34,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.util.Optional;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    double dir;
     static int instances = 0;
     public String name = "Snake ";
 
@@ -51,12 +52,35 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
+
         addPart(4);
         instances++;
         name = name + String.valueOf(instances);
     }
 
     public void step() {
+        dir = getRotate();
+        float turnRate = 2;
+
+        boolean boner = Globals.getBoner();
+        if (boner) {
+            setImage(Globals.snakeHead_v);
+
+            this.setCache(true);
+            this.setEffect(new GaussianBlur());
+
+        } else {
+            this.setCache(false);
+            this.setEffect(null);
+            setImage(Globals.snakeHead);
+        }
+        Game.healthDisplay.setText("HEALTH: " + getHealth());
+        dir = getRotate();
+        if (Globals.leftKeyDown) {
+            dir = dir - turnRate;
+        }
+        if (Globals.rightKeyDown) {
+            dir = dir + turnRate;}
         if (this.name.equals("Snake 1")) {
             Game.healthDisplay.setText(name + " HEALTH: " + getHealth());
         }
@@ -64,8 +88,6 @@ public class SnakeHead extends GameEntity implements Animatable {
             Game.healthDisplay2.setText(name + " HEALTH: " + getHealth());
         }
 
-        double dir = getRotate();
-        float turnRate = 2;
 
         if (name.equals("Snake 1")) {
             if (Globals.leftKeyDown) {
@@ -84,7 +106,6 @@ public class SnakeHead extends GameEntity implements Animatable {
                 dir = dir + turnRate;
             }
         }
-
         // set rotation and position
         setRotate(dir);
         float speed = 2;
