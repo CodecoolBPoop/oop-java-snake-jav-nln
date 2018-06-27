@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 
 public class FollowingEnemy extends SimpleEnemy {
 
-    protected static final int SPEED = 2;
+    protected static final int SPEED = 1;
 
     public FollowingEnemy(Pane pane) {
         super(pane);
@@ -24,14 +24,17 @@ public class FollowingEnemy extends SimpleEnemy {
         }
         double direction = getAngle(Globals.snakeHeads.get(0).getX(),
             Globals.snakeHeads.get(0).getY(), getX(), getY());
-        setRotate(direction);
+        setRotate(direction + 220);
         heading = Utils.directionToVector(direction, SPEED);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
 
     public double getAngle(double targetX, double targetY, double thisX, double thisY) {
-        double angle = Math.toDegrees(Math.atan2(targetY - thisY, targetX - thisX));
+        double anglerad = (Math.atan2(targetY - thisY, targetX - thisX));
+        anglerad += Math.PI / 2.0;
+        double angle = Math.toDegrees(anglerad);
+
         if (angle < 0) {
             angle += 360;
         }
