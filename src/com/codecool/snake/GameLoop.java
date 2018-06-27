@@ -23,10 +23,8 @@ public class GameLoop extends AnimationTimer {
 
         if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
             Globals.setBoner(false);
-            System.out.println("____");
 
             for (GameEntity e : Globals.gameObjects){
-                System.out.println(e);
                 if (e instanceof Eighteen){
                     e.destroy();
                 }
