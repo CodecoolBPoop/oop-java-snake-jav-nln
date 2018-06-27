@@ -21,6 +21,8 @@ public class Globals {
     public static Image superPowerUp = new Image("powerup_pill.png");
     //.. put here the other images you want to use
 
+
+
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
     public static boolean aKeyDown;
