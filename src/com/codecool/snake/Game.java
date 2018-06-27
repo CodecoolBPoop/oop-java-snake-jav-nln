@@ -17,9 +17,9 @@ import javafx.stage.Stage;
 
 public class Game extends Pane {
 
-    public static Text healthDisplay = new Text(50, 50, "SNAKE 1 HEALTH: ");
-    public static Text healthDisplay2 = new Text(50, 75, "SNAKE 2 HEALTH: ");
-    private Stage primaryStage;
+    public static Text healthDisplay = new Text(50,50,"SNAKE 1 HEALTH: ");
+    public static Text healthDisplay2 = new Text(50,75,"SNAKE 2 HEALTH: ");
+    public Stage primaryStage;
 
     public Game(Stage primaryStage) {
         new SnakeHead(this, 500, 500);
@@ -40,6 +40,7 @@ public class Game extends Pane {
 
         restart();
 
+
         this.primaryStage = primaryStage;
     }
 
@@ -51,6 +52,7 @@ public class Game extends Pane {
         restartButton.setLayoutY(10);
         this.getChildren().add(restartButton);
         restartButton.setOnAction(ActionEvent -> {
+            Globals.gameLoop.stop();
             primaryStage.close();
             Globals.bonerStartTime = 0;
             Main.initStage(primaryStage);

@@ -1,16 +1,15 @@
 package com.codecool.snake;
 
-import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import static com.codecool.snake.Game.healthDisplay;
 import static com.codecool.snake.Game.healthDisplay2;
 
 public class Main extends Application {
+
     public static Game game;
 
     public static void main(String[] args) {
