@@ -36,14 +36,15 @@ public class GameLoop extends AnimationTimer {
 
     private void respawnEntities() {
         long unixTime = System.currentTimeMillis();
-        int spawnDelayMax = 3000;
-        int spawnDelayMin = 200;
-        int maxPowerUps = 5;
-        int maxSimpleEnemies = 5;
-        int maxRandomPathEnemies = 5;
+        final int SPAWN_DELAY_MAY = 3000;
+        final int SPAWN_DELAY_MIN = 200;
+        final int MAX_POWERUPS = 5;
+        final int MAX_SIMPLEENEMIES = 5;
+        final int MAX_RANDOMPATHENEMIES = 5;
 
         if (unixTime > spawnTimer) {
-            long spawnDelay = ThreadLocalRandom.current().nextLong(spawnDelayMin, spawnDelayMax);
+            long spawnDelay = ThreadLocalRandom.current()
+                .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAY);
             spawnTimer = unixTime + spawnDelay;
 
             int powerUpCounter = 0;
@@ -64,17 +65,17 @@ public class GameLoop extends AnimationTimer {
                 }
             }
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (powerUpCounter < maxPowerUps) {
+            if (powerUpCounter < MAX_POWERUPS) {
                 Globals.addGameObject(new SimplePowerup(Main.game));
             }
 
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (simpleEnemyCounter < maxSimpleEnemies) {
+            if (simpleEnemyCounter < MAX_SIMPLEENEMIES) {
                 Globals.addGameObject(new SimpleEnemy(Main.game));
             }
 
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (randomPathEnemyCounter < maxRandomPathEnemies) {
+            if (randomPathEnemyCounter < MAX_RANDOMPATHENEMIES) {
                 Globals.addGameObject(new RandomPathEnemy(Main.game));
             }
         }

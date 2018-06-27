@@ -43,6 +43,7 @@ public class Globals {
     public static Image snakeHead_v = new Image("snake_head_pink.png");
     public static Image snakeBody_v = new Image("snake_body_skin.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");
+    public static Image followingEnemy = new Image("padlizsan.png");
     public static Image randomPathEnemy = new Image("barack.png");
     public static Image powerupBerry = new Image("powerup_berry.png");
     public static Image superPowerUp = new Image("powerup_pill.png");
