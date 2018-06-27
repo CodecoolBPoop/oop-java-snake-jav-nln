@@ -16,7 +16,7 @@ public class Game extends Pane {
 
     public static Text healthDisplay = new Text(50,50,"SNAKE 1 HEALTH: ");
     public static Text healthDisplay2 = new Text(50,75,"SNAKE 2 HEALTH: ");
-    public static Text healthDisplay = new Text(50,50,"HEALTH: ");
+  //  public static Text healthDisplay = new Text(50,50,"HEALTH: ");
     public static Button restartButton = new Button("something");
     private Stage primaryStage;
 
