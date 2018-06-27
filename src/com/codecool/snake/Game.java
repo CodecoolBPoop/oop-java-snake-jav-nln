@@ -1,8 +1,10 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SuperPowerup;
+import com.codecool.snake.entities.powerups.ViagraPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,7 +38,7 @@ public class Game extends Pane {
 
         new SuperPowerup(this);
         new SuperPowerup(this);
-
+        new ViagraPowerup(this);
         this.primaryStage = primaryStage;
     }
 

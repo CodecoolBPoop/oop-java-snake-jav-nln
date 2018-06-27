@@ -8,12 +8,14 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Point2D;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    public double dir;
     static int instances = 0;
     public String name = "Snake ";
 
@@ -32,6 +34,28 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
+        double dir = getRotate();
+        float turnRate = 2;
+
+        boolean boner = Globals.getBoner();
+        if (boner) {
+            setImage(Globals.snakeHead_v);
+
+            this.setCache(true);
+            this.setEffect(new GaussianBlur());
+
+        } else {
+            this.setCache(false);
+            this.setEffect(null);
+            setImage(Globals.snakeHead);
+        }
+        Game.healthDisplay.setText("HEALTH: " + getHealth());
+        dir = getRotate();
+        if (Globals.leftKeyDown) {
+            dir = dir - turnRate;
+        }
+        if (Globals.rightKeyDown) {
+            dir = dir + turnRate;}
         if (this.name.equals("Snake 1")) {
             Game.healthDisplay.setText(name + " HEALTH: " + getHealth());
         }
@@ -39,8 +63,6 @@ public class SnakeHead extends GameEntity implements Animatable {
             Game.healthDisplay2.setText(name + " HEALTH: " + getHealth());
         }
 
-        double dir = getRotate();
-        float turnRate = 2;
 
         if (name.equals("Snake 1")) {
             if (Globals.leftKeyDown) {
@@ -59,7 +81,6 @@ public class SnakeHead extends GameEntity implements Animatable {
                 dir = dir + turnRate;
             }
         }
-
         // set rotation and position
         setRotate(dir);
         float speed = 2;
