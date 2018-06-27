@@ -22,10 +22,11 @@ public class FollowingEnemy extends SimpleEnemy {
         if (isOutOfBounds()) {
 //            destroy();
         }
-        double direction = getAngle(Globals.snakeHeads.get(0).getX(),
-            Globals.snakeHeads.get(0).getX(), getX(), getY());
+        double direction = heading
+            .angle(Globals.snakeHeads.get(0).getX(), Globals.snakeHeads.get(0).getX());
         setRotate(direction);
         heading = Utils.directionToVector(direction, SPEED);
+
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
