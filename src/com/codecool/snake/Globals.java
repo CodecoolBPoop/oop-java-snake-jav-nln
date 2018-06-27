@@ -10,11 +10,38 @@ import java.util.List;
 // class for holding all static stuff
 public class Globals {
 
+    private static boolean boner = false;
+    public static double bonerStartTime = 0;
+
+    public static void setBoner(boolean isBoner) {
+        if (isBoner) {
+            boner = true;
+        } else {
+            boner = false;
+        }
+    }
+
+    public static boolean getBoner(){
+        return boner;
+    }
+
+    public static void setBonerStartTime(){
+        bonerStartTime = System.currentTimeMillis();
+    }
+
+    public static double getBonerStartTime(){
+        return bonerStartTime;
+    }
+
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
 
+    public static Image eighteen = new Image("18.png");
+    public static Image viagra = new Image("viagra.png");
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
+    public static Image snakeHead_v = new Image("snake_head_pink.png");
+    public static Image snakeBody_v = new Image("snake_body_skin.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");
     public static Image powerupBerry = new Image("powerup_berry.png");
     public static Image superPowerUp = new Image("powerup_pill.png");

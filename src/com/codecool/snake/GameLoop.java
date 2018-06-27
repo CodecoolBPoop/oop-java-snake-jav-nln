@@ -2,8 +2,12 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+import com.codecool.snake.entities.powerups.ViagraPowerup;
 import javafx.animation.AnimationTimer;
+import javafx.scene.layout.Pane;
+import jdk.nashorn.internal.objects.Global;
 
 import java.io.IOException;
 
@@ -16,6 +20,18 @@ public class GameLoop extends AnimationTimer {
     public void handle(long now) {
 
         respawnPowerUps();
+
+        if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
+            Globals.setBoner(false);
+            System.out.println("____");
+
+            for (GameEntity e : Globals.gameObjects){
+                System.out.println(e);
+                if (e instanceof Eighteen){
+                    e.destroy();
+                }
+            }
+        }
 
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
@@ -53,12 +69,9 @@ public class GameLoop extends AnimationTimer {
                     powerUpCounter++;
                 }
             }
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
             if (powerUpCounter < maxPowerUps) {
                 Globals.addGameObject(new SimplePowerup(Main.game));
             }
-
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
         }
     }
 }
