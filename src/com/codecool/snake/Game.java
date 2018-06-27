@@ -17,8 +17,8 @@ import javafx.stage.Stage;
 
 public class Game extends Pane {
 
-    public static Text healthDisplay = new Text(50,50,"SNAKE 1 HEALTH: ");
-    public static Text healthDisplay2 = new Text(50,75,"SNAKE 2 HEALTH: ");
+    public static Text healthDisplay = new Text(50, 50, "SNAKE 1 HEALTH: ");
+    public static Text healthDisplay2 = new Text(50, 75, "SNAKE 2 HEALTH: ");
     public Stage primaryStage;
 
     public Game(Stage primaryStage) {

@@ -1,7 +1,7 @@
 package com.codecool.snake;
 
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.RandomPathEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
@@ -52,7 +52,6 @@ public class GameLoop extends AnimationTimer {
             long spawnDelay = ThreadLocalRandom.current()
                 .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAY);
             spawnTimer = unixTime + spawnDelay;
-
 
             int powerUpCounter = 0;
             int simpleEnemyCounter = 0;

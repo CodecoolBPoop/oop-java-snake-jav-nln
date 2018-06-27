@@ -1,11 +1,11 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.Game;
-import com.codecool.snake.Main;
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
-import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.Main;
 import com.codecool.snake.Utils;
+import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +14,8 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class SnakeHead extends GameEntity implements Animatable {
@@ -100,7 +100,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
-                    score+=10;
+                    score += 10;
                 }
             }
         }
@@ -120,7 +120,8 @@ public class SnakeHead extends GameEntity implements Animatable {
                 Stage stage = new Stage();
                 stage.setTitle("All the snakes has been DIED");
 
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
+                Parent root = FXMLLoader
+                    .load(getClass().getClassLoader().getResource("theend.fxml"));
 
                 Text text = new Text();
                 text.setY(100);

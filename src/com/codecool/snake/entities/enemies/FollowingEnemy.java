@@ -6,13 +6,13 @@ import javafx.scene.layout.Pane;
 
 public class FollowingEnemy extends SimpleEnemy {
 
-    protected static final int SPEED = 1;
+    protected static final int SPEED = 2;
 
     public FollowingEnemy(Pane pane) {
         super(pane);
         setImage(Globals.followingEnemy);
         double direction = getAngle(Globals.snakeHeads.get(0).getX(),
-            Globals.snakeHeads.get(0).getX(), getX(), getY());
+            Globals.snakeHeads.get(0).getY(), getX(), getY());
         setRotate(direction);
         heading = Utils.directionToVector(direction, SPEED);
     }
@@ -22,11 +22,10 @@ public class FollowingEnemy extends SimpleEnemy {
         if (isOutOfBounds()) {
 //            destroy();
         }
-        double direction = heading
-            .angle(Globals.snakeHeads.get(0).getX(), Globals.snakeHeads.get(0).getX());
+        double direction = getAngle(Globals.snakeHeads.get(0).getX(),
+            Globals.snakeHeads.get(0).getY(), getX(), getY());
         setRotate(direction);
         heading = Utils.directionToVector(direction, SPEED);
-
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
