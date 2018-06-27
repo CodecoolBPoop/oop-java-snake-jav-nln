@@ -48,16 +48,17 @@ public class SnakeBody extends GameEntity implements Animatable {
             this.setEffect(new GaussianBlur());
             setImage(Globals.snakeBody_v);
             for (GameEntity e : Globals.gameObjects) {
-
                 if (e instanceof SnakeHead) {
-                    Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -10);
+                    System.out.println("DIR:"+((SnakeHead) e).dir);
+                    Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -20);
                     double x = parent.getX() + heading.getX();
                     double y = parent.getY() + heading.getY();
                     history.add(new Vec2d(x, y));
                     setX(x);
                     setY(y);
+                    break;
                 }
-                break;
+
             }
         } else {
             this.setCache(false);

@@ -15,7 +15,7 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
-    public double dir;
+    double dir;
     static int instances = 0;
     public String name = "Snake ";
 
@@ -34,7 +34,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
-        double dir = getRotate();
+        dir = getRotate();
         float turnRate = 2;
 
         boolean boner = Globals.getBoner();
