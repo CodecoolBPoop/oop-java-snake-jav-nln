@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TitledPane fx:controller="com.codecool.snake.Controller" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="GAME OVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <Button id="NEW" layoutX="253.0" layoutY="162.0" mnemonicParsing="false" text="NEW GAME" textAlignment="CENTER" onAction="#newGame"/>
+            <Button id="EXIT" layoutX="276.0" layoutY="214.0" mnemonicParsing="false" text="EXIT" onAction="#exit" />
+         </children></AnchorPane>
+  </content>
+</TitledPane>

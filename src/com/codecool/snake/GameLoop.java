@@ -9,7 +9,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import jdk.nashorn.internal.objects.Global;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.io.IOException;
 
 public class GameLoop extends AnimationTimer {
 
@@ -23,10 +23,8 @@ public class GameLoop extends AnimationTimer {
 
         if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
             Globals.setBoner(false);
-            System.out.println("____");
 
             for (GameEntity e : Globals.gameObjects){
-                System.out.println(e);
                 if (e instanceof Eighteen){
                     e.destroy();
                 }
@@ -36,7 +34,11 @@ public class GameLoop extends AnimationTimer {
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
                 Animatable animObject = (Animatable) gameObject;
-                animObject.step();
+                try {
+                    animObject.step();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         Globals.gameObjects.addAll(Globals.newGameObjects);
@@ -61,7 +63,6 @@ public class GameLoop extends AnimationTimer {
             int powerUpCounter = 0;
             for (GameEntity o : Globals.gameObjects) {
                 if (o instanceof SimplePowerup) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     powerUpCounter++;
                 }
             }
