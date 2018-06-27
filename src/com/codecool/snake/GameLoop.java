@@ -4,9 +4,8 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.animation.AnimationTimer;
-import javafx.scene.layout.Pane;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.io.IOException;
 
 public class GameLoop extends AnimationTimer {
 
@@ -21,7 +20,11 @@ public class GameLoop extends AnimationTimer {
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
                 Animatable animObject = (Animatable) gameObject;
-                animObject.step();
+                try {
+                    animObject.step();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         Globals.gameObjects.addAll(Globals.newGameObjects);

@@ -6,35 +6,16 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
-import javafx.geometry.Insets;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.image.ImageView;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.Optional;
+import java.io.IOException;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -42,6 +23,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private int health;
     static int instances = 0;
     public String name = "Snake ";
+    static int score;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -56,7 +38,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         name = name + String.valueOf(instances);
     }
 
-    public void step() {
+    public void step() throws IOException {
         if (this.name.equals("Snake 1")) {
             Game.healthDisplay.setText(name + " HEALTH: " + getHealth());
         }
@@ -99,6 +81,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
+                    score+=10;
                 }
             }
         }
@@ -115,53 +98,23 @@ public class SnakeHead extends GameEntity implements Animatable {
             destroy();
             instances--;
             if (instances==0) {
+                Stage stage = new Stage();
+                stage.setTitle("All the snakes has been DIED");
 
-                final Image titleScreen = new Image("button_snake.png"); //title screen image
-                final Image playButton = new Image("button_new-game.png"); //the play button image
-                final Image scoreButton = new Image("button_exit.png"); //the score button image
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("anyad.fxml"));
 
-                final ImageView flashScreen_node = new ImageView();
-                flashScreen_node.setImage(titleScreen); //set the image of the title screen
-
-                final Button play_button  = new Button();
-                final ImageView play_button_node = new ImageView();
-
-                final Button score_button = new Button();
-                final ImageView score_button_node = new ImageView();
-
-                play_button_node.setImage(playButton); //set the image of the play button
-                score_button_node.setImage(scoreButton); //set the image of the score button
-
-                play_button.setGraphic(play_button_node);
-                play_button.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))); //this is to make the button background transparent
-
-                score_button.setGraphic(score_button_node);
-                score_button.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
-
-                /*
-                 * create the container of those buttons
-                 */
-
-                Stage theStage = new Stage();
-                final VBox buttonContainer = new VBox(20);
-                buttonContainer.setAlignment(Pos.TOP_CENTER);
-                Insets buttonContainerPadding = new Insets(400, 1, 100, 1);
-                buttonContainer.setPadding(buttonContainerPadding);
-                buttonContainer.getChildren().addAll(play_button, score_button);
-
-                theStage.setTitle( "The Mighty Rock!" );
-                theStage.getIcons().add(titleScreen); //stage icon
-
-                StackPane root = new StackPane();
                 Text text = new Text();
-                text.setX(100);
                 text.setY(100);
-                text.setText("YOUR SCORE: ");
-                root.getChildren().addAll(flashScreen_node, buttonContainer);
-                root.getChildren().add(new Text(100,50,"HIGH SCORE"));//add the title screen and button container to the stackpane
-                Scene theScene = new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
-                theStage.setScene( theScene );
-                theStage.show();
+                text.setX(250);
+                text.setText("YOUR SCORE: " + score);
+
+                Group group = new Group();
+                group.getChildren().addAll(root, text);
+
+                Scene scene = new Scene(group);
+
+                stage.setScene(scene);
+                stage.show();
 
                 Globals.gameLoop.stop();
             }
