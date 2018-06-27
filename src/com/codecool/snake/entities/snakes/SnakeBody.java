@@ -50,7 +50,7 @@ public class SnakeBody extends GameEntity implements Animatable {
             for (GameEntity e : Globals.gameObjects) {
 
                 if (e instanceof SnakeHead) {
-                    Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -20);
+                    Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -10);
                     double x = parent.getX() + heading.getX();
                     double y = parent.getY() + heading.getY();
                     history.add(new Vec2d(x, y));

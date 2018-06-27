@@ -19,5 +19,4 @@ public class Eighteen extends GameEntity {
         setX(650);
         setY(350);
     }
-
 }

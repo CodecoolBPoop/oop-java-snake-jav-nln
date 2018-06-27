@@ -4,6 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+import com.codecool.snake.entities.powerups.ViagraPowerup;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import jdk.nashorn.internal.objects.Global;
@@ -22,11 +23,12 @@ public class GameLoop extends AnimationTimer {
 
         if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
             Globals.setBoner(false);
+            System.out.println("____");
 
             for (GameEntity e : Globals.gameObjects){
                 System.out.println(e);
                 if (e instanceof Eighteen){
-                    Globals.removeGameObject(e);
+                    e.destroy();
                 }
             }
         }
