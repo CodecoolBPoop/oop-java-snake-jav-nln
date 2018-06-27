@@ -63,7 +63,6 @@ public class GameLoop extends AnimationTimer {
             int powerUpCounter = 0;
             for (GameEntity o : Globals.gameObjects) {
                 if (o instanceof SimplePowerup) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     powerUpCounter++;
                 }
             }

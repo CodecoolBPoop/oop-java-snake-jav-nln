@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.Game;
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -134,8 +135,9 @@ public class SnakeHead extends GameEntity implements Animatable {
 
                 stage.setScene(scene);
                 stage.show();
-
+                Main.game.primaryStage.close();
                 Globals.gameLoop.stop();
+
             }
         }
     }
