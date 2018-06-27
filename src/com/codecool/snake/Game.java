@@ -1,6 +1,5 @@
 package com.codecool.snake;
 
-import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SuperPowerup;
 import com.codecool.snake.entities.powerups.ViagraPowerup;
@@ -15,8 +14,8 @@ import javafx.stage.Stage;
 
 public class Game extends Pane {
 
-    public static Text healthDisplay = new Text(50,50,"SNAKE 1 HEALTH: ");
-    public static Text healthDisplay2 = new Text(50,75,"SNAKE 2 HEALTH: ");
+    public static Text healthDisplay = new Text(50, 50, "SNAKE 1 HEALTH: ");
+    public static Text healthDisplay2 = new Text(50, 75, "SNAKE 2 HEALTH: ");
     public static Button restartButton = new Button("something");
     private Stage primaryStage;
 
@@ -35,7 +34,6 @@ public class Game extends Pane {
 
         restart();
 
-
         this.primaryStage = primaryStage;
     }
 
@@ -48,6 +46,7 @@ public class Game extends Pane {
         this.getChildren().add(restartButton);
         restartButton.setOnAction(ActionEvent -> {
             primaryStage.close();
+            Globals.bonerStartTime = 0;
             Main.initStage(primaryStage);
         });
     }

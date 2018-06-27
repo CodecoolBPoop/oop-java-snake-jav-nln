@@ -1,40 +1,28 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.Game;
-import com.codecool.snake.Main;
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
-import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
+import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.util.Optional;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -56,6 +44,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         addPart(4);
         instances++;
         name = name + String.valueOf(instances);
+        Globals.addSnakeHead(this);
     }
 
     public void step() {

@@ -18,8 +18,8 @@ public class RandomPathEnemy extends SimpleEnemy {
         if (isOutOfBounds()) {
             destroy();
         }
-        if (step % 20 == 0) {
-            double direction = Globals.rnd.nextDouble() * 60;
+        if (step % 80 == 0) {
+            double direction = Globals.rnd.nextDouble() * 360;
             setRotate(direction);
             heading = Utils.directionToVector(direction, SPEED);
         }

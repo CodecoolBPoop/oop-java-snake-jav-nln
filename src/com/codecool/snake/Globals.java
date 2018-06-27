@@ -1,13 +1,11 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
-import java.util.Random;
-import javafx.scene.image.Image;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import javafx.scene.image.Image;
 
 // class for holding all static stuff
 public class Globals {
@@ -59,6 +57,7 @@ public class Globals {
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
+    public static List<GameEntity> snakeHeads;
     public static GameLoop gameLoop;
     public static Random rnd = new Random();
 
@@ -66,10 +65,15 @@ public class Globals {
         gameObjects = new LinkedList<>();
         newGameObjects = new LinkedList<>();
         oldGameObjects = new LinkedList<>();
+        snakeHeads = new LinkedList<>();
     }
 
     public static void addGameObject(GameEntity toAdd) {
         newGameObjects.add(toAdd);
+    }
+
+    public static void addSnakeHead(GameEntity snakeHead) {
+        snakeHeads.add(snakeHead);
     }
 
     public static void removeGameObject(GameEntity toRemove) {
