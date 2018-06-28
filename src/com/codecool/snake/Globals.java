@@ -25,6 +25,7 @@ public class Globals {
     public static boolean getBoner(){
         return boner;
     }
+    public static String boneredSnake;
 
     public static void setBonerStartTime(){
         bonerStartTime = System.currentTimeMillis();

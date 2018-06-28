@@ -46,7 +46,8 @@ public class SnakeHead extends GameEntity implements Animatable {
         float turnRate = 2;
 
         boolean boner = Globals.getBoner();
-        if (boner) {
+
+        if (boner && name.equals(Globals.boneredSnake)) {
             setImage(Globals.snakeHead_v);
 
             this.setCache(true);
