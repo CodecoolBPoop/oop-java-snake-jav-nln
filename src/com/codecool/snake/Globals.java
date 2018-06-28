@@ -15,11 +15,7 @@ public class Globals {
     public static double bonerStartTime = 0;
 
     public static void setBoner(boolean isBoner) {
-        if (isBoner) {
-            boner = true;
-        } else {
-            boner = false;
-        }
+        boner = isBoner;
     }
 
     public static boolean getBoner(){

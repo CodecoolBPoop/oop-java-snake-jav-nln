@@ -7,9 +7,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
-
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -37,7 +35,6 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
-
         addPart(4);
         instances++;
         name = "Snake " + String.valueOf(instances);

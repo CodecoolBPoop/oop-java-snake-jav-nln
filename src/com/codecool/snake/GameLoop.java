@@ -6,19 +6,13 @@ import com.codecool.snake.entities.enemies.RandomPathEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
-
 import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
 import javafx.animation.AnimationTimer;
 
 
 public class GameLoop extends AnimationTimer {
-
-    public static final int MIN_ENEMY_DELAY = 1000;
     private long spawnTimer;
-    private Random random = new Random();
 
     // This gets called every 1/60 seconds
     @Override
@@ -56,9 +50,9 @@ public class GameLoop extends AnimationTimer {
         long unixTime = System.currentTimeMillis();
         final int SPAWN_DELAY_MAX = 3000;
         final int SPAWN_DELAY_MIN = 200;
-        final int MAX_POWERUPS = 5;
-        final int MAX_SIMPLEENEMIES = 5;
-        final int MAX_RANDOMPATHENEMIES = 5;
+        final int MAX_POWER_UPS = 5;
+        final int MAX_SIMPLE_ENEMIES = 5;
+        final int MAX_RANDOM_PATH_ENEMIES = 5;
 
         if (unixTime > spawnTimer) {
             long spawnDelay = ThreadLocalRandom.current()
@@ -83,17 +77,17 @@ public class GameLoop extends AnimationTimer {
                 }
             }
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (powerUpCounter < MAX_POWERUPS) {
+            if (powerUpCounter < MAX_POWER_UPS) {
                 Globals.addGameObject(new SimplePowerup(Main.game));
             }
 
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (simpleEnemyCounter < MAX_SIMPLEENEMIES) {
+            if (simpleEnemyCounter < MAX_SIMPLE_ENEMIES) {
                 Globals.addGameObject(new SimpleEnemy(Main.game));
             }
 
             System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
-            if (randomPathEnemyCounter < MAX_RANDOMPATHENEMIES) {
+            if (randomPathEnemyCounter < MAX_RANDOM_PATH_ENEMIES) {
                 Globals.addGameObject(new RandomPathEnemy(Main.game));
             }
         }
