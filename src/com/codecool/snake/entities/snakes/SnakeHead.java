@@ -29,7 +29,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     public String name = "Snake ";
     static int score;
 
-    double x, y;
+    public double x, y;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
