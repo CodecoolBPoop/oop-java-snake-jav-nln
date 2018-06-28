@@ -1,6 +1,7 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class Globals {
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
-    public static List<GameEntity> snakeHeads;
+    public static List<SnakeHead> snakeHeads;
     public static GameLoop gameLoop;
     public static Random rnd = new Random();
 
@@ -73,7 +74,7 @@ public class Globals {
         newGameObjects.add(toAdd);
     }
 
-    public static void addSnakeHead(GameEntity snakeHead) {
+    public static void addSnakeHead(SnakeHead snakeHead) {
         snakeHeads.add(snakeHead);
     }
 

@@ -23,7 +23,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    static int instances = 0;
+    public static int instances = 0;
     public String name = "Snake ";
     static int score;
 
@@ -114,6 +114,7 @@ public class SnakeHead extends GameEntity implements Animatable {
             if (this.name.equals("Snake 2")) {
                 Game.healthDisplay2.setText(name + " DIED!!!");
             }
+            health = 0;
             destroy();
             instances--;
             if (instances==0) {
