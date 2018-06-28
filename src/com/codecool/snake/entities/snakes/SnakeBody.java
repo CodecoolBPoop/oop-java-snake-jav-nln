@@ -1,6 +1,5 @@
 package com.codecool.snake.entities.snakes;
 
-import com.codecool.snake.Main;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
@@ -11,15 +10,14 @@ import javafx.scene.Node;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.Pane;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class SnakeBody extends GameEntity implements Animatable {
 
-    private GameEntity parent;
-    private Queue<Vec2d> history = new LinkedList<>();
+    private final GameEntity parent;
+    private final Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
 
     public SnakeBody(Pane pane, GameEntity parent) {

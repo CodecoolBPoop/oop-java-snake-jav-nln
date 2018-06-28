@@ -23,9 +23,9 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    public static int instances = 0;
-    public String name;
-    static int score;
+    private static int instances = 0;
+    private final String name;
+    private static int score;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -90,7 +90,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
 
-        // check if collided with an enemy or a powerup
+        // check if collided with an enemy or a power up
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 if (entity instanceof Interactable) {

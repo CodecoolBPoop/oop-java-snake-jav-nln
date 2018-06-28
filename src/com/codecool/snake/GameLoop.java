@@ -21,7 +21,6 @@ public class GameLoop extends AnimationTimer {
         respawnEntities();
         if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
             Globals.setBoner(false);
-
             for (GameEntity e : Globals.gameObjects){
                 if (e instanceof Eighteen){
                     e.destroy();
@@ -58,7 +57,6 @@ public class GameLoop extends AnimationTimer {
             long spawnDelay = ThreadLocalRandom.current()
                     .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
             spawnTimer = unixTime + spawnDelay;
-
             int powerUpCounter = 0;
             int simpleEnemyCounter = 0;
             int randomPathEnemyCounter = 0;
