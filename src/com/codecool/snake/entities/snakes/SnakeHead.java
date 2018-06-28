@@ -3,6 +3,7 @@ package com.codecool.snake.entities.snakes;
 import com.codecool.snake.Game;
 import com.codecool.snake.Globals;
 import com.codecool.snake.Main;
+import com.codecool.snake.Sound;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
@@ -139,4 +140,10 @@ public class SnakeHead extends GameEntity implements Animatable {
         return health;
     }
 
+    @Override
+    public void destroy() {
+        super.destroy();
+        Sound s = new Sound();
+        s.playShortSound("resources/AAAGH1.wav");
+    }
 }
