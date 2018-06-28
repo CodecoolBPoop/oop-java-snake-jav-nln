@@ -29,8 +29,13 @@ public class SnakeHead extends GameEntity implements Animatable {
     public String name = "Snake ";
     static int score;
 
+    double x, y;
+
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
+        x = xc;
+        y = yc;
+
         setX(xc);
         setY(yc);
         health = 100;
@@ -91,6 +96,8 @@ public class SnakeHead extends GameEntity implements Animatable {
         setRotate(dir);
         float speed = 2;
         Point2D heading = Utils.directionToVector(dir, speed);
+        x = getX() + heading.getX();
+        y = getY() + heading.getY();
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
 
