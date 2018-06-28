@@ -20,7 +20,8 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     private final GameEntity parent;
     private final Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
-
+    public double x;
+    public double y;
     public SnakeBody(Pane pane, GameEntity parent, String name) {
         super(pane);
         this.parent = parent;
@@ -33,6 +34,9 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
 
         double xc = parent.getX();
         double yc = parent.getY();
+        x = xc;
+        y = yc;
+
         setX(xc);
         setY(yc);
         for (int i = 0; i < historySize; i++) {
@@ -51,8 +55,8 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
                 if (e instanceof SnakeHead) {
                     System.out.println("DIR:"+((SnakeHead) e).dir);
                     Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -20);
-                    double x = parent.getX() + heading.getX();
-                    double y = parent.getY() + heading.getY();
+                    x = parent.getX() + heading.getX();
+                    y = parent.getY() + heading.getY();
                     history.add(new Vec2d(x, y));
                     setX(x);
                     setY(y);
@@ -64,6 +68,8 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
             this.setCache(false);
             this.setEffect(null);
             setImage(Globals.snakeBody);
+            x = pos.x;
+            y = pos.y;
             setX(pos.x);
             setY(pos.y);
             history.add(new Vec2d(parent.getX(), parent.getY())); // add the parent's current position to the beginning of the history
