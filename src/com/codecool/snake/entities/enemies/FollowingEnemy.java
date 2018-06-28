@@ -52,6 +52,10 @@ public class FollowingEnemy extends SimpleEnemy {
     }
 
     private boolean isAlive() {
-        return Globals.snakeHeads.get(snakeIndex).getHealth() > 0;
+        try {
+            return Globals.snakeHeads.get(snakeIndex).getHealth() > 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
