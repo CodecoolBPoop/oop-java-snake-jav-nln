@@ -13,10 +13,10 @@ import javafx.scene.layout.Pane;
 // a simple enemy TODO make better ones.
 public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
 
-    protected Point2D heading;
-    protected static final int damage = 10;
-    protected static final int SPEED = 1;
-    protected Random rnd = new Random();
+    Point2D heading;
+    private static final int damage = 10;
+    static final int SPEED = 1;
+    final Random rnd = new Random();
 
     public SimpleEnemy(Pane pane) {
         super(pane);

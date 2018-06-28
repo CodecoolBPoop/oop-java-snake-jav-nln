@@ -12,14 +12,10 @@ import javafx.scene.image.Image;
 public class Globals {
 
     private static boolean boner = false;
-    public static double bonerStartTime = 0;
+    static double bonerStartTime = 0;
 
     public static void setBoner(boolean isBoner) {
-        if (isBoner) {
-            boner = true;
-        } else {
-            boner = false;
-        }
+        boner = isBoner;
     }
 
     public static boolean getBoner(){
@@ -37,17 +33,17 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
 
-    public static Image eighteen = new Image("18.png");
-    public static Image viagra = new Image("viagra.png");
-    public static Image snakeHead = new Image("snake_head.png");
-    public static Image snakeBody = new Image("snake_body.png");
-    public static Image snakeHead_v = new Image("snake_head_pink.png");
-    public static Image snakeBody_v = new Image("snake_body_skin.png");
-    public static Image simpleEnemy = new Image("simple_enemy.png");
-    public static Image followingEnemy = new Image("padlizsan.png");
-    public static Image randomPathEnemy = new Image("barack.png");
-    public static Image powerupBerry = new Image("powerup_berry.png");
-    public static Image superPowerUp = new Image("powerup_pill.png");
+    public static final Image eighteen = new Image("18.png");
+    public static final Image viagra = new Image("viagra.png");
+    public static final Image snakeHead = new Image("snake_head.png");
+    public static final Image snakeBody = new Image("snake_body.png");
+    public static final Image snakeHead_v = new Image("snake_head_pink.png");
+    public static final Image snakeBody_v = new Image("snake_body_skin.png");
+    public static final Image simpleEnemy = new Image("simple_enemy.png");
+    public static final Image followingEnemy = new Image("padlizsan.png");
+    public static final Image randomPathEnemy = new Image("barack.png");
+    public static final Image powerupBerry = new Image("powerup_berry.png");
+    public static final Image superPowerUp = new Image("powerup_pill.png");
     //.. put here the other images you want to use
 
 
@@ -56,12 +52,12 @@ public class Globals {
     public static boolean rightKeyDown;
     public static boolean aKeyDown;
     public static boolean dKeyDown;
-    public static List<GameEntity> gameObjects;
-    public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
-    public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
-    public static List<SnakeHead> snakeHeads;
+    public static final List<GameEntity> gameObjects;
+    public static final List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
+    public static final List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
+    public static final List<SnakeHead> snakeHeads;
     public static GameLoop gameLoop;
-    public static Random rnd = new Random();
+    public static final Random rnd = new Random();
 
     static {
         gameObjects = new LinkedList<>();

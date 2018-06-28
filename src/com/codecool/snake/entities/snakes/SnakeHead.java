@@ -23,9 +23,9 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    public static int instances = 0;
-    public String name = "Snake ";
-    static int score;
+    private static int instances = 0;
+    private final String name;
+    private static int score;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -35,10 +35,9 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
-
         addPart(4);
         instances++;
-        name = name + String.valueOf(instances);
+        name = "Snake " + String.valueOf(instances);
         Globals.addSnakeHead(this);
     }
 
@@ -58,7 +57,6 @@ public class SnakeHead extends GameEntity implements Animatable {
             this.setEffect(null);
             setImage(Globals.snakeHead);
         }
-        dir = getRotate();
 
         if (this.name.equals("Snake 1")) {
             Game.healthDisplay.setText(name + " HEALTH: " + getHealth());
@@ -70,19 +68,19 @@ public class SnakeHead extends GameEntity implements Animatable {
 
         if (name.equals("Snake 1")) {
             if (Globals.leftKeyDown) {
-                dir = dir - turnRate;
+                dir -= turnRate;
             }
             if (Globals.rightKeyDown) {
-                dir = dir + turnRate;
+                dir += turnRate;
             }
         }
 
         if (name.equals("Snake 2")) {
             if (Globals.aKeyDown) {
-                dir = dir - turnRate;
+                dir -= turnRate;
             }
             if (Globals.dKeyDown) {
-                dir = dir + turnRate;
+                dir += turnRate;
             }
         }
         // set rotation and position
@@ -92,7 +90,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
 
-        // check if collided with an enemy or a powerup
+        // check if collided with an enemy or a power up
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 if (entity instanceof Interactable) {
@@ -116,36 +114,28 @@ public class SnakeHead extends GameEntity implements Animatable {
             health = 0;
             destroy();
             instances--;
-            if (instances==0) {
+            if (instances == 0) {
                 Stage stage = new Stage();
-                stage.setTitle("All the snakes has been DIED");
-
-                Parent root = FXMLLoader
-                    .load(getClass().getClassLoader().getResource("theend.fxml"));
-
+                stage.setTitle("All the snakes died");
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
                 Text text = new Text();
                 text.setY(100);
                 text.setX(250);
                 text.setText("YOUR SCORE: " + score);
-
                 Group group = new Group();
                 group.getChildren().addAll(root, text);
-
                 Scene scene = new Scene(group);
-
                 stage.setScene(scene);
                 stage.show();
                 Main.game.primaryStage.close();
                 Globals.gameLoop.stop();
-
             }
         }
     }
 
     public void addPart(int numParts) {
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newPart = new SnakeBody(pane, tail);
-            tail = newPart;
+            tail = new SnakeBody(pane, tail);
         }
     }
 
