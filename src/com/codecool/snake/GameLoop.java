@@ -53,7 +53,7 @@ public class GameLoop extends AnimationTimer {
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
 
-        if (Globals.instances == 0) {
+        if (Globals.instances <= 0) {
             Stage stage = new Stage();
             stage.setTitle("All the snakes died");
             Parent root = null;
