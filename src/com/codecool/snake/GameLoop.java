@@ -9,17 +9,13 @@ import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.AnimationTimer;
 
 
 public class GameLoop extends AnimationTimer {
-
-    public static final int MIN_ENEMY_DELAY = 1000;
     private long spawnTimer;
-    private Random random = new Random();
 
     // This gets called every 1/60 seconds
     @Override
@@ -70,19 +66,15 @@ public class GameLoop extends AnimationTimer {
             int followingEnemyCounter = 0;
             for (GameEntity o : Globals.gameObjects) {
                 if (o instanceof SimplePowerup) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     powerUpCounter++;
                 }
                 if (o instanceof SimpleEnemy) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     simpleEnemyCounter++;
                 }
                 if (o instanceof RandomPathEnemy) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     randomPathEnemyCounter++;
                 }
                 if (o instanceof FollowingEnemy) {
-                    System.out.println(o + " " + o.getX() + " " + o.getY());
                     followingEnemyCounter++;
                 }
             }
