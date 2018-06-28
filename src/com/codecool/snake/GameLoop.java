@@ -4,10 +4,13 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.RandomPathEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+
 import javafx.animation.AnimationTimer;
 
 
@@ -22,6 +25,15 @@ public class GameLoop extends AnimationTimer {
     public void handle(long now) {
 
         respawnEntities();
+        if (Globals.getBonerStartTime() + 5000 < System.currentTimeMillis()){
+            Globals.setBoner(false);
+
+            for (GameEntity e : Globals.gameObjects){
+                if (e instanceof Eighteen){
+                    e.destroy();
+                }
+            }
+        }
 
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
@@ -50,7 +62,7 @@ public class GameLoop extends AnimationTimer {
 
         if (unixTime > spawnTimer) {
             long spawnDelay = ThreadLocalRandom.current()
-                .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAY);
+                    .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAY);
             spawnTimer = unixTime + spawnDelay;
 
             int powerUpCounter = 0;
