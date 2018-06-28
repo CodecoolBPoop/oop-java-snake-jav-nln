@@ -27,8 +27,8 @@ public class FollowingEnemy extends SimpleEnemy {
         while (!isAlive()) {
             snakeIndex = getRandomIndex();
         }
-        double direction = getAngle(Globals.snakeHeads.get(0).getX(),
-            Globals.snakeHeads.get(0).getY(), getX(), getY());
+        double direction = getAngle(Globals.snakeHeads.get(snakeIndex).getX(),
+            Globals.snakeHeads.get(snakeIndex).getY(), getX(), getY());
         setRotate(direction + 220);
         heading = Utils.directionToVector(direction, SPEED);
         setX(getX() + heading.getX());
