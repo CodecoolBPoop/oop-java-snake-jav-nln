@@ -2,6 +2,7 @@ package com.codecool.snake.entities.powerups;
 
 import com.codecool.snake.Globals;
 import com.codecool.snake.Main;
+import com.codecool.snake.Sound;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -23,6 +24,8 @@ public class ViagraPowerup extends GameEntity implements Interactable {
 
     @Override
     public void apply(SnakeHead snakeHead) {
+        Sound s = new Sound();
+        s.playShortSound("resources/viagra.wav");
         snakeHead.changeHealth(100);
         snakeHead.addPart(10);
         Globals.setBoner(true);
