@@ -6,10 +6,8 @@ import javafx.fxml.FXML;
 
 public class Controller {
 
-
     @FXML
     void newGame() {
-        game.primaryStage.close();
         Main.initStage(game.primaryStage);
     }
 
