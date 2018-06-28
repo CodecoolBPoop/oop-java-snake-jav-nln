@@ -48,7 +48,7 @@ public class FollowingEnemy extends SimpleEnemy {
     }
 
     private int getRandomIndex() {
-        return rnd.nextInt(Globals.instances + 1);
+        return rnd.nextInt(Math.max(0, Globals.instances + 1));
     }
 
     private boolean isAlive() {
