@@ -34,9 +34,9 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
-        addPart(4);
         Globals.instances++;
         name = "Snake " + String.valueOf(Globals.instances);
+        addPart(4);
         System.out.println(name + " is ALIVE");
         Globals.addSnakeHead(this);
     }
@@ -94,10 +94,8 @@ public class SnakeHead extends GameEntity implements Animatable {
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 if (entity instanceof Interactable) {
-                    if (entity instanceof SnakeHead || entity instanceof SnakeBody) {
-                    if(entity.name.equals(name)) {
+                    if (entity.name.equals(name)) {
                         continue;
-                    }
                     }
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
@@ -118,7 +116,11 @@ public class SnakeHead extends GameEntity implements Animatable {
             }
             health = 0;
             Globals.instances--;
-            this.destroy();
+            for (GameEntity entity : Globals.getGameObjects()) {
+                if(entity.name.equals(this.name)) {
+                    entity.destroy();
+                }
+            }
         }
     }
 

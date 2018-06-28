@@ -70,8 +70,8 @@ public class GameLoop extends AnimationTimer {
             group.getChildren().addAll(root, text);
             Scene scene = new Scene(group);
             stage.setScene(scene);
-            stage.show();
             Main.game.primaryStage.close();
+            stage.show();
             Globals.gameLoop.stop();
         }
     }
