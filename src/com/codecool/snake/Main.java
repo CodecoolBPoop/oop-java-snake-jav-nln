@@ -1,12 +1,12 @@
 package com.codecool.snake;
 
+import static com.codecool.snake.Game.healthDisplay;
+import static com.codecool.snake.Game.healthDisplay2;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import static com.codecool.snake.Game.healthDisplay;
-import static com.codecool.snake.Game.healthDisplay2;
 
 public class Main extends Application {
 

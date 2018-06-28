@@ -1,31 +1,29 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.Game;
-import com.codecool.snake.Main;
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
-import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.Main;
 import com.codecool.snake.Utils;
+import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
-import javafx.geometry.Point2D;
-import javafx.scene.Scene;
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    static int instances = 0;
+    public static int instances = 0;
     public String name = "Snake ";
     static int score;
 
@@ -41,6 +39,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         addPart(4);
         instances++;
         name = name + String.valueOf(instances);
+        Globals.addSnakeHead(this);
     }
 
     public void step() throws IOException {
@@ -100,7 +99,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
-                    score+=10;
+                    score += 10;
                 }
             }
         }
@@ -114,13 +113,15 @@ public class SnakeHead extends GameEntity implements Animatable {
             if (this.name.equals("Snake 2")) {
                 Game.healthDisplay2.setText(name + " DIED!!!");
             }
+            health = 0;
             destroy();
             instances--;
             if (instances==0) {
                 Stage stage = new Stage();
                 stage.setTitle("All the snakes has been DIED");
 
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
+                Parent root = FXMLLoader
+                    .load(getClass().getClassLoader().getResource("theend.fxml"));
 
                 Text text = new Text();
                 text.setY(100);

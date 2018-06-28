@@ -1,8 +1,8 @@
 package com.codecool.snake;
 
-import javafx.fxml.FXML;
-
 import static com.codecool.snake.Main.game;
+
+import javafx.fxml.FXML;
 
 public class Controller {
 
