@@ -25,7 +25,6 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    private final String name;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -95,6 +94,11 @@ public class SnakeHead extends GameEntity implements Animatable {
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 if (entity instanceof Interactable) {
+                    if (entity instanceof SnakeHead || entity instanceof SnakeBody) {
+                    if(entity.name.equals(name)) {
+                        continue;
+                    }
+                    }
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
@@ -120,7 +124,7 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void addPart(int numParts) {
         for (int i = 0; i < numParts; i++) {
-            tail = new SnakeBody(pane, tail);
+            tail = new SnakeBody(pane, tail, name);
         }
     }
 

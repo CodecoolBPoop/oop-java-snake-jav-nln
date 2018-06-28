@@ -4,6 +4,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.Interactable;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
@@ -14,16 +15,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class SnakeBody extends GameEntity implements Animatable {
+public class SnakeBody extends GameEntity implements Animatable, Interactable {
 
     private final GameEntity parent;
     private final Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
 
-    public SnakeBody(Pane pane, GameEntity parent) {
+    public SnakeBody(Pane pane, GameEntity parent, String name) {
         super(pane);
         this.parent = parent;
         setImage(Globals.snakeBody);
+        super.name = name;
 
         // place it visually below the current tail
         List<Node> children = pane.getChildren();
@@ -68,4 +70,14 @@ public class SnakeBody extends GameEntity implements Animatable {
         }
     }
 
+
+    @Override
+    public void apply(SnakeHead snakeHead) {
+        System.out.println("APPLY");
+    }
+
+    @Override
+    public String getMessage() {
+        return "OUCH!";
+    }
 }
