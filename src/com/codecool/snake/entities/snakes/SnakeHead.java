@@ -59,7 +59,6 @@ public class SnakeHead extends GameEntity implements Animatable {
             this.setEffect(null);
             setImage(Globals.snakeHead);
         }
-        Game.healthDisplay.setText("HEALTH: " + getHealth());
         dir = getRotate();
 
         if (this.name.equals("Snake 1")) {
