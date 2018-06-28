@@ -26,6 +26,7 @@ public class FollowingEnemy extends SimpleEnemy {
         }
         while (!isAlive()) {
             snakeIndex = getRandomIndex();
+            if (Globals.instances == 0) break;
         }
         double direction = getAngle(Globals.snakeHeads.get(snakeIndex).getX(),
             Globals.snakeHeads.get(snakeIndex).getY(), getX(), getY());
@@ -47,7 +48,7 @@ public class FollowingEnemy extends SimpleEnemy {
     }
 
     private int getRandomIndex() {
-        return rnd.nextInt(2);
+        return rnd.nextInt(Globals.instances + 1);
     }
 
     private boolean isAlive() {
