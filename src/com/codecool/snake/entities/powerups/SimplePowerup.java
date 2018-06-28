@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.powerups;
 
+import com.codecool.snake.Sound;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
@@ -16,12 +17,14 @@ public class SimplePowerup extends GameEntity implements Interactable {
         super(pane);
         setImage(Globals.powerupBerry);
         pane.getChildren().add(this);
-        setX(ThreadLocalRandom.current().nextLong(25, (long)Globals.WINDOW_WIDTH - 25));
-        setY(ThreadLocalRandom.current().nextLong(25, (long)Globals.WINDOW_HEIGHT - 25));
+        setX(ThreadLocalRandom.current().nextLong(25, (long) Globals.WINDOW_WIDTH - 25));
+        setY(ThreadLocalRandom.current().nextLong(25, (long) Globals.WINDOW_HEIGHT - 25));
     }
 
     @Override
     public void apply(SnakeHead snakeHead) {
+        Sound s = new Sound();
+        s.playShortSound("resources/mmm.wav");
         snakeHead.addPart(1);
         destroy();
     }
