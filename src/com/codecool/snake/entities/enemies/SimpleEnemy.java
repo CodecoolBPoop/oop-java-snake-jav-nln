@@ -83,7 +83,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
                 } else if (e instanceof SnakeBody) {
                     System.out.println("HAS SNAKE BODY");
-                    double newDistance = Math.hypot(randX-((SnakeHead) e).x, randY-((SnakeHead) e).y);
+                    double newDistance = Math.hypot(randX-((SnakeBody) e).x, randY-((SnakeBody) e).y);
                     System.out.println("SZÁMÍTÁS: " + newDistance);
                     if (distance > newDistance){
                         distance = newDistance;

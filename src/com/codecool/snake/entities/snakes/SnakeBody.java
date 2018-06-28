@@ -53,7 +53,6 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
             setImage(Globals.snakeBody_v);
             for (GameEntity e : Globals.gameObjects) {
                 if (e instanceof SnakeHead) {
-                    System.out.println("DIR:"+((SnakeHead) e).dir);
                     Point2D heading = Utils.directionToVector(((SnakeHead) e).dir, -20);
                     x = parent.getX() + heading.getX();
                     y = parent.getY() + heading.getY();
