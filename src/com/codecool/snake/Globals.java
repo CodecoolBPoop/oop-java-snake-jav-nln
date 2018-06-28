@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 public class Globals {
 
     private static boolean boner = false;
-    public static double bonerStartTime = 0;
+    static double bonerStartTime = 0;
 
     public static void setBoner(boolean isBoner) {
         boner = isBoner;

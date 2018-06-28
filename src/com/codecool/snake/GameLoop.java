@@ -55,7 +55,7 @@ public class GameLoop extends AnimationTimer {
         final int MAX_POWER_UPS = 5;
         final int MAX_SIMPLE_ENEMIES = 5;
         final int MAX_RANDOM_PATH_ENEMIES = 5;
-        final int MAX_FOLLOWINGENEMIES = 5;
+        final int MAX_FOLLOWING_ENEMIES = 5;
         if (unixTime > spawnTimer) {
             long spawnDelay = ThreadLocalRandom.current()
                     .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
@@ -87,7 +87,7 @@ public class GameLoop extends AnimationTimer {
             if (randomPathEnemyCounter < MAX_RANDOM_PATH_ENEMIES) {
                 Globals.addGameObject(new RandomPathEnemy(Main.game));
             }
-            if (followingEnemyCounter < MAX_FOLLOWINGENEMIES) {
+            if (followingEnemyCounter < MAX_FOLLOWING_ENEMIES) {
                 Globals.addGameObject(new FollowingEnemy(Main.game));
             }
         }
