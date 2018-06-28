@@ -9,6 +9,7 @@ import com.codecool.snake.entities.powerups.Eighteen;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.AnimationTimer;
