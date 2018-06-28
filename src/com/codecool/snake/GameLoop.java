@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.FollowingEnemy;
 import com.codecool.snake.entities.enemies.RandomPathEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.Eighteen;
@@ -59,6 +60,7 @@ public class GameLoop extends AnimationTimer {
         final int MAX_POWERUPS = 5;
         final int MAX_SIMPLEENEMIES = 5;
         final int MAX_RANDOMPATHENEMIES = 5;
+        final int MAX_FOLLOWINGENEMIES = 5;
 
         if (unixTime > spawnTimer) {
             long spawnDelay = ThreadLocalRandom.current()
@@ -68,6 +70,7 @@ public class GameLoop extends AnimationTimer {
             int powerUpCounter = 0;
             int simpleEnemyCounter = 0;
             int randomPathEnemyCounter = 0;
+            int followingEnemyCounter = 0;
             for (GameEntity o : Globals.gameObjects) {
                 if (o instanceof SimplePowerup) {
                     System.out.println(o + " " + o.getX() + " " + o.getY());
@@ -81,20 +84,23 @@ public class GameLoop extends AnimationTimer {
                     System.out.println(o + " " + o.getX() + " " + o.getY());
                     randomPathEnemyCounter++;
                 }
+                if (o instanceof FollowingEnemy) {
+                    System.out.println(o + " " + o.getX() + " " + o.getY());
+                    followingEnemyCounter++;
+                }
             }
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
+
             if (powerUpCounter < MAX_POWERUPS) {
                 Globals.addGameObject(new SimplePowerup(Main.game));
             }
-
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
             if (simpleEnemyCounter < MAX_SIMPLEENEMIES) {
                 Globals.addGameObject(new SimpleEnemy(Main.game));
             }
-
-            System.out.println("SpawnDelay, pUps: " + spawnDelay + " " + powerUpCounter);
             if (randomPathEnemyCounter < MAX_RANDOMPATHENEMIES) {
                 Globals.addGameObject(new RandomPathEnemy(Main.game));
+            }
+            if (followingEnemyCounter < MAX_FOLLOWINGENEMIES) {
+                Globals.addGameObject(new FollowingEnemy(Main.game));
             }
         }
     }
