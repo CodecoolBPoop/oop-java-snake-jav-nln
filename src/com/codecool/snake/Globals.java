@@ -11,6 +11,10 @@ import javafx.scene.image.Image;
 // class for holding all static stuff
 public class Globals {
 
+    public static int instances = 0;
+
+    public static int score;
+
     private static boolean boner = false;
     static double bonerStartTime = 0;
 

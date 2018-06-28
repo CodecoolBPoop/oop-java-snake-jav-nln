@@ -18,14 +18,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.xml.bind.JAXBElement;
+
 public class SnakeHead extends GameEntity implements Animatable {
 
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     double dir;
-    private static int instances = 0;
     private final String name;
-    private static int score;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -36,8 +36,9 @@ public class SnakeHead extends GameEntity implements Animatable {
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
         addPart(4);
-        instances++;
-        name = "Snake " + String.valueOf(instances);
+        Globals.instances++;
+        name = "Snake " + String.valueOf(Globals.instances);
+        System.out.println(name + " is ALIVE");
         Globals.addSnakeHead(this);
     }
 
@@ -97,7 +98,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
-                    score += 10;
+                    Globals.score += 10;
                 }
             }
         }
@@ -112,24 +113,8 @@ public class SnakeHead extends GameEntity implements Animatable {
                 Game.healthDisplay2.setText(name + " DIED!!!");
             }
             health = 0;
-            destroy();
-            instances--;
-            if (instances == 0) {
-                Stage stage = new Stage();
-                stage.setTitle("All the snakes died");
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
-                Text text = new Text();
-                text.setY(100);
-                text.setX(250);
-                text.setText("YOUR SCORE: " + score);
-                Group group = new Group();
-                group.getChildren().addAll(root, text);
-                Scene scene = new Scene(group);
-                stage.setScene(scene);
-                stage.show();
-                Main.game.primaryStage.close();
-                Globals.gameLoop.stop();
-            }
+            Globals.instances--;
+//            destroy();
         }
     }
 

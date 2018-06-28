@@ -12,6 +12,12 @@ import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.AnimationTimer;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 public class GameLoop extends AnimationTimer {
@@ -46,6 +52,28 @@ public class GameLoop extends AnimationTimer {
 
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
+
+        if (Globals.instances == 0) {
+            Stage stage = new Stage();
+            stage.setTitle("All the snakes died");
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Text text = new Text();
+            text.setY(100);
+            text.setX(250);
+            text.setText("YOUR SCORE: " + Globals.score);
+            Group group = new Group();
+            group.getChildren().addAll(root, text);
+            Scene scene = new Scene(group);
+            stage.setScene(scene);
+            stage.show();
+            Main.game.primaryStage.close();
+            Globals.gameLoop.stop();
+        }
     }
 
     private void respawnEntities() {
