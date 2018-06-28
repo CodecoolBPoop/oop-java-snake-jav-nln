@@ -73,7 +73,11 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        System.out.println("APPLY");
+        for (GameEntity entity : Globals.getGameObjects()) {
+            if(entity.name.equals(snakeHead.name)) {
+                entity.destroy();
+            }
+        }
     }
 
     @Override
