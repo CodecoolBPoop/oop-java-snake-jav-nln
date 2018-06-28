@@ -43,7 +43,7 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     public void step() {
         Vec2d pos = history.poll(); // remove the oldest item from the history
 
-        if (Globals.getBoner()) {
+        if (Globals.getBoner() && name.equals(Globals.boneredSnake)) {
             this.setCache(true);
             this.setEffect(new GaussianBlur());
             setImage(Globals.snakeBody_v);
@@ -75,7 +75,7 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     public void apply(SnakeHead snakeHead) {
         for (GameEntity entity : Globals.getGameObjects()) {
             if(entity.name.equals(snakeHead.name)) {
-                entity.destroy();
+                snakeHead.changeHealth(-10000);
             }
         }
     }

@@ -28,6 +28,7 @@ public class ViagraPowerup extends GameEntity implements Interactable {
         Globals.setBoner(true);
         Globals.setBonerStartTime();
         Globals.addGameObject(new Eighteen(Main.game));
+        Globals.boneredSnake = snakeHead.name;
         destroy();
     }
 
