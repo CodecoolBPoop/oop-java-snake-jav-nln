@@ -54,7 +54,7 @@ public class GameLoop extends AnimationTimer {
 
     private void respawnEntities() {
         long unixTime = System.currentTimeMillis();
-        final int SPAWN_DELAY_MAY = 3000;
+        final int SPAWN_DELAY_MAX = 3000;
         final int SPAWN_DELAY_MIN = 200;
         final int MAX_POWERUPS = 5;
         final int MAX_SIMPLEENEMIES = 5;
@@ -62,7 +62,7 @@ public class GameLoop extends AnimationTimer {
 
         if (unixTime > spawnTimer) {
             long spawnDelay = ThreadLocalRandom.current()
-                    .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAY);
+                    .nextLong(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
             spawnTimer = unixTime + spawnDelay;
 
             int powerUpCounter = 0;
