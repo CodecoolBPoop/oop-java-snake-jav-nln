@@ -30,7 +30,7 @@ public class FollowingEnemy extends SimpleEnemy {
         }
         double direction = getAngle(Globals.snakeHeads.get(snakeIndex).getX(),
             Globals.snakeHeads.get(snakeIndex).getY(), getX(), getY());
-        setRotate(direction + 220);
+        setRotate(direction/* + 220*/);
         heading = Utils.directionToVector(direction, SPEED);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
