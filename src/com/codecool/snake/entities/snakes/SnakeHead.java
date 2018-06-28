@@ -118,10 +118,9 @@ public class SnakeHead extends GameEntity implements Animatable {
             instances--;
             if (instances==0) {
                 Stage stage = new Stage();
-                stage.setTitle("All the snakes has been DIED");
+                stage.setTitle("All the snakes died");
 
-                Parent root = FXMLLoader
-                    .load(getClass().getClassLoader().getResource("theend.fxml"));
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("theend.fxml"));
 
                 Text text = new Text();
                 text.setY(100);
